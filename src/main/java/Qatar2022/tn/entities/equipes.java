@@ -24,7 +24,7 @@ public class equipes implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  
 	@Column(name="equipeid")
-	private Integer id;
+	private long id;
 	private String nom;
 	private Integer effectif;
 	@JsonIgnore
@@ -38,10 +38,10 @@ public class equipes implements Serializable {
 	//@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	@JsonFormat(shape=JsonFormat.Shape.ARRAY)
 	private List<matchs> matches ;
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getNom() {
@@ -71,7 +71,7 @@ public class equipes implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public equipes(Integer id, String nom, Integer effectif, List<joueurs> joueur, List<matchs> matches) {
+	public equipes(long id, String nom, Integer effectif, List<joueurs> joueur, List<matchs> matches) {
 		super();
 		this.id = id;
 		this.nom = nom;
