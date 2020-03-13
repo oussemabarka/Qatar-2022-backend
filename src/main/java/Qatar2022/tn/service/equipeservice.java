@@ -14,6 +14,6 @@ public interface equipeservice {
 	equipes saveEquipes(equipes equipe);
 
 	equipes findEquipes(long id);
-	  
+	void delete(equipes equipe);
 
 }

@@ -35,7 +35,10 @@ public class imp_equi_service implements equipeservice{
 		// TODO Auto-generated method stub
 		return prepo.findById(id).get();
 	} 
-	
-	
+	public void delete(equipes equipe)
+	{
+		prepo.delete(equipe);
+		
+	}	
 	 
 }
