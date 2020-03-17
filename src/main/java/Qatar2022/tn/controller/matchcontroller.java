@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,10 +63,16 @@ if(match==null) {
 		matchs updateMatchs=mat.saveMatchs(match);
 		return ResponseEntity.ok().body(updateMatchs);
 		
-		
-		
-		
-		
+		}
+
+	@DeleteMapping("/deletematch/{id}")
+	 public ResponseEntity<matchs> DeleteMatchs(@PathVariable(value = "id") Long id){
+		matchs match = mat.findMatchs(id);
+		if(match==null) {
+			return ResponseEntity.notFound().build();
+		}
+		mat.delete(match);
+		 return ResponseEntity.ok().build();	
 	}
 
 
