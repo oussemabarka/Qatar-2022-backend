@@ -4,11 +4,13 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -35,68 +37,67 @@ public class matchs implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "equipeid")
 	private equipes equipej;
-
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	  @JoinColumn(name="arbitres_id")
+	  private arbitres arbitre;
 
 	public Integer getId() {
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public Date getDate() {
 		return date;
 	}
 
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 
 	public String getStade() {
 		return stade;
 	}
 
-
 	public void setStade(String stade) {
 		this.stade = stade;
 	}
-
 
 	public equipes getEquipej() {
 		return equipej;
 	}
 
-
 	public void setEquipej(equipes equipej) {
 		this.equipej = equipej;
 	}
 
+	public arbitres getArbitre() {
+		return arbitre;
+	}
+
+	public void setArbitre(arbitres arbitre) {
+		this.arbitre = arbitre;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-
-	public matchs(Integer id, Date date, String stade, equipes equipej) {
+	public matchs(Integer id, Date date, String stade, equipes equipej, arbitres arbitre) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.stade = stade;
 		this.equipej = equipej;
+		this.arbitre = arbitre;
 	}
-
 
 	public matchs() {
 		super();
 	}
 
-
-
-
-	
+		
 }
