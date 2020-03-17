@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,5 +58,14 @@ arbitres updatearbitre=arb.saveArbitre(arbitre);
 return ResponseEntity.ok().body(updatearbitre);
 
 	}
-	
+	@DeleteMapping("/deletearbitre/{id}")
+	 public ResponseEntity<arbitres> DeleteArbitres(@PathVariable(value = "id") Long id){
+			arbitres arbitre=arb.findArbitre(id);
+		if(arbitre==null) {
+			return ResponseEntity.notFound().build();
+		}
+		arb.delete(arbitre);
+		 return ResponseEntity.ok().build();	
+	}
+
 }
