@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,20 @@ if(arbitre==null) {
 }
         return ResponseEntity.ok().body(arbitre);
 	    
+	}
+	@PutMapping("/updatearbitre/{id}")
+	public ResponseEntity<arbitres> updatearbitre(@PathVariable(value = "id") Long id,@Valid @RequestBody arbitres arbitresdetails ) { 
+		arbitres arbitre=arb.findArbitre(id);
+		if(arbitre==null) {
+			return ResponseEntity.notFound().build();
+		}
+arbitre.setNom(arbitresdetails.getNom());
+arbitre.setPrenom(arbitresdetails.getPrenom());
+arbitre.setMatchs(arbitresdetails.getMatchs());
+
+arbitres updatearbitre=arb.saveArbitre(arbitre);
+return ResponseEntity.ok().body(updatearbitre);
+
 	}
 	
 }
