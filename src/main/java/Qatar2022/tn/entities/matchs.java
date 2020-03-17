@@ -37,7 +37,7 @@ public class matchs implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "equipeid")
 	private equipes equipej;
-	
+	@JsonIgnore
 	@OneToOne(fetch=FetchType.LAZY)
 	  @JoinColumn(name="arbitres_id")
 	  private arbitres arbitre;

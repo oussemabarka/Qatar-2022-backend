@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class arbitres implements Serializable {
@@ -19,7 +21,7 @@ public class arbitres implements Serializable {
 	private long id;
 	private String nom;
 	private String prenom;
-	
+	@JsonIgnore
 	@OneToOne(mappedBy="arbitre")  // référence la relation dans la classe Commune
     private matchs matchs ;
 
