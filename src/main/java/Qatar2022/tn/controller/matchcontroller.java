@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import Qatar2022.tn.entities.equipes;
 import Qatar2022.tn.entities.matchs;
 import Qatar2022.tn.service.*;
 
@@ -46,7 +48,25 @@ if(match==null) {
         return ResponseEntity.ok().body(match);
 	    
 	}
-	
+	@PutMapping("/updatematchs/{id}")
+	public ResponseEntity<matchs> updateMatchs(@PathVariable(value = "id") Long id,@Valid @RequestBody matchs matchsdetails ) { 
+		matchs match = mat.findMatchs(id);
+		if(match==null) {
+			return ResponseEntity.notFound().build();
+		}
+		match.setStade(matchsdetails.getStade());
+		match.setDate(matchsdetails.getDate());
+		match.setEquipej(matchsdetails.getEquipej());
+		match.setArbitre(matchsdetails.getArbitre());
+		
+		matchs updateMatchs=mat.saveMatchs(match);
+		return ResponseEntity.ok().body(updateMatchs);
+		
+		
+		
+		
+		
+	}
 
 
 }
