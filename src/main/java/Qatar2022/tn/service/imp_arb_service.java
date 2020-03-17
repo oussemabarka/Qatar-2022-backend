@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Qatar2022.tn.entities.arbitres;
-import Qatar2022.tn.entities.equipes;
 import Qatar2022.tn.repository.arbitrerepository;
-import Qatar2022.tn.repository.equiperepository;
 
 @Service
 public class imp_arb_service implements arbitreservice {
