@@ -23,11 +23,14 @@ public class joueurscontroller {
 	joueurservice jou;
 	@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getjoueurs")
-	public List<joueurs> getAllMatchs() {
+	public List<joueurs> getAllJoueurs() {
 		List<joueurs> joueur = jou.findAllJoueurs();
 
         return joueur;
 	    
 	}
-
+	@PostMapping("/addjoueurs") 
+	public joueurs createJoueurs(@Valid @RequestBody joueurs joueur) {
+		return jou.saveJoueurs(joueur);
+		}
 }
