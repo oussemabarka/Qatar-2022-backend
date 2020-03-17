@@ -2,8 +2,10 @@ package Qatar2022.tn.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,12 +34,12 @@ public class equipes implements Serializable {
 	@OneToMany(mappedBy="equipest")
 	//@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	@JsonFormat(shape=JsonFormat.Shape.ARRAY)
-	private List<joueurs> joueur ;
+	public List<joueurs> joueur ;
 	
-	@OneToMany(mappedBy="equipej")
+	@OneToMany(mappedBy="equipej",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	//@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	@JsonFormat(shape=JsonFormat.Shape.ARRAY)
-	private List<matchs> matches ;
+	public List<matchs> matches ;
 	public long getId() {
 		return id;
 	}

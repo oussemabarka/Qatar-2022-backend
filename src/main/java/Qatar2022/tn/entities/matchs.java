@@ -23,22 +23,22 @@ public class matchs implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "matchid")
-	private Integer id;
+	private long id;
  
 	private Date date;
 	private String stade;
 	
 
 	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "equipeid")
-	private equipes equipej;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "equipeid", referencedColumnName = "equipeid", insertable = false, updatable = false)
+	public equipes equipej;
 	@JsonIgnore
 	@OneToOne(fetch=FetchType.LAZY)
 	  @JoinColumn(name="arbitres_id")
-	  private arbitres arbitre;
+	  public arbitres arbitre;
 
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -82,7 +82,7 @@ public class matchs implements Serializable {
 		return serialVersionUID;
 	}
 
-	public matchs(Integer id, Date date, String stade, equipes equipej, arbitres arbitre) {
+	public matchs(long id, Date date, String stade, equipes equipej, arbitres arbitre) {
 		super();
 		this.id = id;
 		this.date = date;

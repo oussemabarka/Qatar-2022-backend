@@ -29,7 +29,7 @@ public class matchcontroller {
 	matchservice mat ;
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/getmatch")
+    @GetMapping("/getmatchs")
 	public List<matchs> getAllMatchs() {
 		List<matchs> match = mat.findAllMatchs();
 
