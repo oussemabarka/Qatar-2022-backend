@@ -5,8 +5,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +37,16 @@ public class matchcontroller {
 	public matchs createMatchs(@Valid @RequestBody matchs match) {
 		return mat.saveMatchs(match); 
 		}
+	@GetMapping("/getmatchs/{id}")
+	public ResponseEntity<matchs> getmatchs(@PathVariable(value = "id") Long id) {
+		matchs match = mat.findMatchs(id);
+if(match==null) {
+	return ResponseEntity.notFound().build();
+}
+        return ResponseEntity.ok().body(match);
+	    
+	}
 	
+
+
 }
