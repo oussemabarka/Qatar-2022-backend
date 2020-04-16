@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Qatar2022.tn.entities.matchs;
 import Qatar2022.tn.service.*;
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/api")
@@ -35,6 +36,8 @@ public class matchcontroller {
         return match;
 	    
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
+
 	@PostMapping("/addmatchs") 
 	public matchs createMatchs(@Valid @RequestBody matchs match) {
 		return mat.saveMatchs(match); 
@@ -63,6 +66,7 @@ if(match==null) {
 		return ResponseEntity.ok().body(updateMatchs);
 		
 		}
+	@CrossOrigin(origins = "http://localhost:4200")
 
 	@DeleteMapping("/deletematch/{id}")
 	 public ResponseEntity<matchs> DeleteMatchs(@PathVariable(value = "id") Long id){

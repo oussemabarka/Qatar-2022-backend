@@ -2,6 +2,7 @@ package Qatar2022.tn.controller;
 
 import java.util.List;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Qatar2022.tn.entities.*;
 import Qatar2022.tn.service.*;
+@CrossOrigin(origins = "http://localhost:4200"	)
+
 @RestController
 @RequestMapping("/api")
 public class arbitrecontroller {
@@ -31,6 +34,8 @@ public class arbitrecontroller {
         return arbitre;
 	    
 	}
+	@CrossOrigin(origins = "http://localhost:4200"	)
+
 	@PostMapping("/addarbitre") 
 	public arbitres createArbitres(@Valid @RequestBody arbitres arbitre) {
 		return arb.saveArbitre(arbitre);
@@ -44,6 +49,8 @@ if(arbitre==null) {
         return ResponseEntity.ok().body(arbitre);
 	    
 	}
+	@CrossOrigin(origins = "http://localhost:4200"	)
+
 	@PutMapping("/updatearbitre/{id}")
 	public ResponseEntity<arbitres> updatearbitre(@PathVariable(value = "id") Long id,@Valid @RequestBody arbitres arbitresdetails ) { 
 		arbitres arbitre=arb.findArbitre(id);
@@ -52,12 +59,14 @@ if(arbitre==null) {
 		}
 arbitre.setNom(arbitresdetails.getNom());
 arbitre.setPrenom(arbitresdetails.getPrenom());
-arbitre.setMatchs(arbitresdetails.getMatchs());
+arbitre.setMatches(arbitresdetails.getMatches());
 
 arbitres updatearbitre=arb.saveArbitre(arbitre);
 return ResponseEntity.ok().body(updatearbitre);
 
 	}
+	@CrossOrigin(origins = "http://localhost:4200"	)
+
 	@DeleteMapping("/deletearbitre/{id}")
 	 public ResponseEntity<arbitres> DeleteArbitres(@PathVariable(value = "id") Long id){
 			arbitres arbitre=arb.findArbitre(id);

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import Qatar2022.tn.entities.equipes;
 import Qatar2022.tn.service.*;
 
+@CrossOrigin(origins = "http://localhost:4200"	)
 @RestController
 @RequestMapping("/api")
 public class equipescontroller {
@@ -37,6 +38,7 @@ public class equipescontroller {
         return equipe;
 	    
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
 	
 	@PostMapping("/addequipes")
 	public equipes createEquipes(@Valid @RequestBody equipes equipe) {
@@ -52,6 +54,8 @@ public class equipescontroller {
 	    
 	}
 	*/
+	@CrossOrigin(origins = "http://localhost:4200")
+
 	@GetMapping("/getequipes/{id}")
 	public ResponseEntity<equipes> getEquipes(@PathVariable(value = "id") Long id) {
 		equipes equipe = pserv.findEquipes(id);
@@ -61,6 +65,8 @@ if(equipe==null) {
         return ResponseEntity.ok().body(equipe);
 	    
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
+
 	@PutMapping("/updateequipes/{id}")
 	public ResponseEntity<equipes> updateEquipes(@PathVariable(value = "id") Long id,@Valid @RequestBody equipes equipedetails ) { 
 		equipes equipe = pserv.findEquipes(id);

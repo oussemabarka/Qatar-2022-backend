@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.sun.istack.NotNull;
 
 import Qatar2022.tn.entities.joueurs;
 
@@ -26,8 +26,11 @@ public class equipes implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  
 	@Column(name="equipeid")
+	
 	private long id;
+	
 	private String nom;
+	
 	private Integer effectif;
 	@JsonIgnore
 	

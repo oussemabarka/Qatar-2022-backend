@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 
 import Qatar2022.tn.entities.equipes;
 
@@ -21,10 +22,17 @@ public class joueurs implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "joueurid")
+	@Column(name = "joueurid",nullable=false)
+	@NotNull
 	private Long id;
+	@Column(nullable=false)
+
 	private String nom;
+	@Column(nullable=false)
+
 	private String prenom;
+	@Column(nullable=false)
+
 	private Integer numero;
     @JsonIgnore
 	@ManyToOne

@@ -2,6 +2,7 @@ package Qatar2022.tn.entities;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 
 import Qatar2022.tn.entities.equipes;
 
@@ -23,20 +26,22 @@ public class matchs implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "matchid")
+	
 	private long id;
- 
+	
 	private Date date;
 	private String stade;
 	
 
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "equipeid", referencedColumnName = "equipeid", insertable = false, updatable = false)
+	@ManyToOne
+	@JoinColumn(name = "equipeid")
 	public equipes equipej;
 	@JsonIgnore
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne
 	  @JoinColumn(name="arbitres_id")
-	  public arbitres arbitre;
+	
+	public arbitres arbitre;
 
 	public long getId() {
 		return id;

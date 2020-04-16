@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Qatar2022.tn.entities.joueurs;
 import Qatar2022.tn.service.joueurservice;
+@CrossOrigin(origins = "http://localhost:4200"	)
 
 @RestController
 @RequestMapping("/api")
@@ -32,6 +33,8 @@ public class joueurscontroller {
         return joueur;
 	    
 	}
+	@CrossOrigin(origins = "http://localhost:4200"	)
+
 	@PostMapping("/addjoueurs") 
 	public joueurs createJoueurs(@Valid @RequestBody joueurs joueur) {
 		return jou.saveJoueurs(joueur);
@@ -58,7 +61,8 @@ if(joueur==null) {
 	
 	joueurs updatejoueurs=jou.saveJoueurs(joueur);
 	return ResponseEntity.ok().body(updatejoueurs);
-	}
+	}	@CrossOrigin(origins = "http://localhost:4200"	)
+
 	@DeleteMapping("/deletejoueurs/{id}")
 	 public ResponseEntity<joueurs> DeleteMatchs(@PathVariable(value = "id") Long id){
 		joueurs joueur=jou.findJoueurs(id);
